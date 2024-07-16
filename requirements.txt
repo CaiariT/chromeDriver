@@ -1,0 +1,4 @@
+pathlib
+selenium
+slack_sdk
+python-dotenv

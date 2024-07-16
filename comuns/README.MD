@@ -1,11 +1,3 @@
-<h1> Complementos sobre COMUNS </h1>
-
-<h3> COMUNS é um complemento dos arquivos de task </h3>
-
-<p>- Variaveis de ambiente<br>
-- Configurações<br>
-- Notificações no slack</p>
-
 ## -notification_slack.py
 Esse aquivo chama a função de enviar notificações em um canal especifico do Slack. 
 

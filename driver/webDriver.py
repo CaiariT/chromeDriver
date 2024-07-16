@@ -4,13 +4,12 @@ from selenium.webdriver.chrome.service import Service
 from selenium.webdriver.chrome.options import Options
 from selenium.common.exceptions import SessionNotCreatedException
 import subprocess
-import baixaDriver
+from driver import dowsDrivre
 
 dirAtual = Path(__file__).resolve().parent
 dirPrincipal = dirAtual.parent
 driverExe = dirPrincipal / 'chromeDriver' / 'chromedriver-win64' / 'chromedriver.exe'
 userDataDir = dirPrincipal / 'chromeDriver' / 'user-data'
-
 
 def obtem_versao_chromedriver():
     try:
@@ -29,24 +28,21 @@ def webDriver():
         return
 
     chrome_options = Options()
-    chrome_options.add_argument(f'--user-data-dir={userDataDir}')
+    # chrome_options.add_argument(f'--user-data-dir={userDataDir}')
     # chrome_options.add_argument('--headless')
     chrome_service = Service(driverExe)
 
     try:
         driver = webdriver.Chrome(service=chrome_service, options=chrome_options)
-        driver.get('https://example.com/')
+        return driver
         
     except SessionNotCreatedException as e:
         print(f"Erro ao inicializar o WebDriver: {e}")
         if "This version of ChromeDriver only supports Chrome version" in str(e):
-            if baixaDriver():
-                print("Nova versão do ChromeDriver baixada com sucesso. Tentando novamente.")
+            if dowsDrivre():
                 webDriver()
+                print("Versão do ChromeDriver atualizada com sucesso.")
             else:
-                print("Não foi possível baixar uma versão compatível do ChromeDriver.")
+                print("Não foi possível baixar a nova do driver.")
         else:
             print("Erro inesperado ao tentar iniciar o WebDriver.")
-
-# Testar o WebDriver
-webDriver()

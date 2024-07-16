@@ -7,7 +7,8 @@ load_dotenv()
 
 SLACK_TOKEN = os.getenv("SLACK_TOKEN")
 SLACK_CHANNEL = os.getenv("SLACK_CHANNEL")
-SLACK_CHANNEL_DENEGADA = os.getenv("SLACK_CHANNEL_DENEGADA")
+
+
 client = WebClient(token=SLACK_TOKEN)
 
 
